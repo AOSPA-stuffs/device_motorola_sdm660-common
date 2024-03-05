@@ -46,6 +46,13 @@ TARGET_BOOTLOADER_BOARD_NAME := SDM660
 BUILD_BROKEN_DUP_RULES := true
 BUILD_BROKEN_ELF_PREBUILT_PRODUCT_COPY_FILES := true
 
+# Data Services
+SOONG_CONFIG_NAMESPACES += rmnetctl
+SOONG_CONFIG_rmnetctl += \
+    old_rmnet_data
+
+SOONG_CONFIG_rmnetctl_old_rmnet_data := true
+
 # HIDL
 DEVICE_MANIFEST_FILE := $(COMMON_PATH)/configs/vintf/manifest.xml
 
