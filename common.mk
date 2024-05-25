@@ -184,9 +184,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.location.gps.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.location.gps.xml
 
-# GMS
-PRODUCT_GMS_CLIENTID_BASE := android-motorola
-
 # Health
 PRODUCT_PACKAGES += \
     android.hardware.health@2.1-impl-qti \
@@ -200,11 +197,6 @@ PRODUCT_PACKAGES += \
     libhwbinder \
     libhwbinder.vendor
 
-# IMS
-PRODUCT_PACKAGES += \
-    ims-ext-common \
-    ims_ext_common.xml
-
 # Init
 PRODUCT_PACKAGES += \
     check_dynamic_partitions \
@@ -216,7 +208,7 @@ PRODUCT_PACKAGES += \
     init.qcom.sh \
     init.qti.qseecomd.sh \
     wlan_carrier_bin.sh
-    
+
 PRODUCT_PACKAGES += \
     init.mmi.ramdump.rc \
     init.mmi.usb.rc \
@@ -379,10 +371,7 @@ PRODUCT_PACKAGES += \
 
 # Soong namespaces
 PRODUCT_SOONG_NAMESPACES += \
-    $(LOCAL_PATH) \
-    hardware/qcom/display \
-    hardware/qcom/media \
-    vendor/qcom/opensource/audio-hal/primary-hal
+    $(LOCAL_PATH)
 
 # Telephony
 PRODUCT_COPY_FILES += \
