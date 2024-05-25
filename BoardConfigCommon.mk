@@ -118,7 +118,7 @@ TARGET_SYSTEM_PROP += $(PLATFORM_PATH)/properties/system.prop
 TARGET_VENDOR_PROP += $(PLATFORM_PATH)/properties/vendor.prop
 
 # Recovery
-TARGET_RECOVERY_FSTAB := $(PLATFORM_PATH)/rootdir/etc/fstab.qcom
+TARGET_RECOVERY_FSTAB := $(PLATFORM_PATH)/init/etc/fstab.qcom
 
 # RIL
 TARGET_PROVIDES_QTI_TELEPHONY_JAR := true

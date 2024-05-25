@@ -59,8 +59,6 @@ PRODUCT_PACKAGES += \
     libqcomvoiceprocessing \
     libvolumelistener
 
-TARGET_EXCLUDES_AUDIOFX := true
-
 ifneq ($(PREBUILT_AUDIOHAL), true)
 PRODUCT_PACKAGES += \
     audio.primary.sdm660 \
@@ -192,11 +190,12 @@ PRODUCT_PACKAGES += \
     init.moto.rc \
     init.power.rc \
     init.qcom.rc \
+    init.recovery.qcom.rc \
     ueventd.qcom.rc
 
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/rootdir/etc/rdp_fstab.qcom:$(TARGET_COPY_OUT_VENDOR)/etc/fstab.qcom \
-    $(LOCAL_PATH)/rootdir/etc/rdp_fstab.qcom:$(TARGET_COPY_OUT_RECOVERY)/root/first_stage_ramdisk/fstab.qcom
+    $(LOCAL_PATH)/init/etc/rdp_fstab.qcom:$(TARGET_COPY_OUT_VENDOR)/etc/fstab.qcom \
+    $(LOCAL_PATH)/init/etc/rdp_fstab.qcom:$(TARGET_COPY_OUT_RECOVERY)/root/first_stage_ramdisk/fstab.qcom
 
 # IPACM
 PRODUCT_PACKAGES += \
@@ -297,10 +296,6 @@ PRODUCT_PACKAGES += \
     android.hardware.radio.config@1.2.vendor \
     android.hardware.radio.deprecated@1.0.vendor \
     android.hardware.secure_element@1.2.vendor
-
-# Recovery
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/recovery/root/init.recovery.qcom.rc:root/init.recovery.qcom.rc
 
 # Seccomp
 PRODUCT_COPY_FILES += \
