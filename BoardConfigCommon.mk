@@ -122,7 +122,6 @@ TARGET_RECOVERY_FSTAB := $(PLATFORM_PATH)/init/etc/fstab.qcom
 
 # RIL
 TARGET_PROVIDES_QTI_TELEPHONY_JAR := true
-CUSTOM_APNS_FILE := $(PLATFORM_PATH)/configs/sprint_apns.xml
 ODM_MANIFEST_SKUS += qcril
 ODM_MANIFEST_QCRIL_FILES := $(PLATFORM_PATH)/configs/vintf/odm_manifest_qcril.xml
 
