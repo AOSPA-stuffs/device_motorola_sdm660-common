@@ -14,15 +14,7 @@
 # limitations under the License.
 #
 
-#
-# This file sets variables that control the way modules are built
-# thorughout the system. It should not be used to conditionally
-# disable makefiles (the proper mechanism to control what gets
-# included in a build is to use PRODUCT_PACKAGES in a product
-# definition file).
-#
-
-PLATFORM_PATH := device/motorola/sdm660-common
+COMMON_PATH := device/motorola/sdm660-common
 
 # APEX
 OVERRIDE_TARGET_FLATTEN_APEX := true
@@ -54,23 +46,18 @@ TARGET_BOOTLOADER_BOARD_NAME := SDM660
 BUILD_BROKEN_DUP_RULES := true
 BUILD_BROKEN_ELF_PREBUILT_PRODUCT_COPY_FILES := true
 
-# Disable sparse on all filesystem images
-TARGET_USERIMAGES_SPARSE_EROFS_DISABLED := true
-TARGET_USERIMAGES_SPARSE_EXT_DISABLED := true
-TARGET_USERIMAGES_SPARSE_F2FS_DISABLED := true
-
 # HIDL
-DEVICE_MANIFEST_FILE := $(PLATFORM_PATH)/configs/vintf/manifest.xml
+DEVICE_MANIFEST_FILE := $(COMMON_PATH)/configs/vintf/manifest.xml
 ifdef BOARD_USES_KEYMASTER_4
-    DEVICE_MANIFEST_FILE += $(PLATFORM_PATH)/configs/vintf/keymaster_4.xml
+    DEVICE_MANIFEST_FILE += $(COMMON_PATH)/configs/vintf/keymaster_4.xml
 else
-    DEVICE_MANIFEST_FILE += $(PLATFORM_PATH)/configs/vintf/keymaster_3.xml
+    DEVICE_MANIFEST_FILE += $(COMMON_PATH)/configs/vintf/keymaster_3.xml
 endif
 TARGET_FS_CONFIG_GEN += \
-    $(PLATFORM_PATH)/configs/mot_aids.fs
+    $(COMMON_PATH)/configs/mot_aids.fs
 
 # Init
-TARGET_INIT_VENDOR_LIB := //$(PLATFORM_PATH):libinit_sdm660
+TARGET_INIT_VENDOR_LIB := //$(COMMON_PATH):libinit_sdm660
 TARGET_RECOVERY_DEVICE_MODULES := libinit_sdm660
 
 # Jemalloc
@@ -81,7 +68,7 @@ MALLOC_SVELTE_FOR_LIBC32 := true
 BOARD_KERNEL_CMDLINE := androidboot.hardware=qcom ehci-hcd.park=3
 BOARD_KERNEL_CMDLINE += lpm_levels.sleep_disabled=1 service_locator.enable=1
 BOARD_KERNEL_CMDLINE += swiotlb=2048 androidboot.configfs=true
-BOARD_KERNEL_CMDLINE += sched_enable_hmp=1 sched_enable_power_aware=1
+BOARD_KERNEL_CMDLINE += sched_enable_hmp=1
 BOARD_KERNEL_CMDLINE += androidboot.usbcontroller=a800000.dwc3
 BOARD_KERNEL_CMDLINE += loop.max_part=7
 BOARD_KERNEL_CMDLINE += androidboot.veritymode=eio
@@ -112,26 +99,26 @@ BOARD_ROOT_EXTRA_SYMLINKS := \
 BOARD_SYSTEMIMAGE_PARTITION_RESERVED_SIZE := 83886080 # 80 MB
 
 # Properties
-TARGET_PRODUCT_PROP += $(PLATFORM_PATH)/properties/product.prop
-TARGET_SYSTEM_EXT_PROP += $(PLATFORM_PATH)/properties/system_ext.prop
-TARGET_SYSTEM_PROP += $(PLATFORM_PATH)/properties/system.prop
-TARGET_VENDOR_PROP += $(PLATFORM_PATH)/properties/vendor.prop
+TARGET_PRODUCT_PROP += $(COMMON_PATH)/properties/product.prop
+TARGET_SYSTEM_EXT_PROP += $(COMMON_PATH)/properties/system_ext.prop
+TARGET_SYSTEM_PROP += $(COMMON_PATH)/properties/system.prop
+TARGET_VENDOR_PROP += $(COMMON_PATH)/properties/vendor.prop
 
 # Recovery
-TARGET_RECOVERY_FSTAB := $(PLATFORM_PATH)/init/etc/fstab.qcom
+TARGET_RECOVERY_FSTAB := $(COMMON_PATH)/init/etc/fstab.qcom
 
 # RIL
 TARGET_PROVIDES_QTI_TELEPHONY_JAR := true
 ODM_MANIFEST_SKUS += qcril
-ODM_MANIFEST_QCRIL_FILES := $(PLATFORM_PATH)/configs/vintf/odm_manifest_qcril.xml
+ODM_MANIFEST_QCRIL_FILES := $(COMMON_PATH)/configs/vintf/odm_manifest_qcril.xml
 
 # Root
 BOARD_ROOT_EXTRA_SYMLINKS := \
     /mnt/vendor/persist:/persist
 
 # SELinux
-BOARD_VENDOR_SEPOLICY_DIRS += $(PLATFORM_PATH)/sepolicy/vendor
-PRODUCT_PRIVATE_SEPOLICY_DIRS += $(PLATFORM_PATH)/sepolicy/private
+BOARD_VENDOR_SEPOLICY_DIRS += $(COMMON_PATH)/sepolicy/vendor
+PRODUCT_PRIVATE_SEPOLICY_DIRS += $(COMMON_PATH)/sepolicy/private
 
 # Treble
 BOARD_VNDK_VERSION := current

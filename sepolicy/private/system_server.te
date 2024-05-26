@@ -24,8 +24,6 @@ allow system_server build_bootimage_prop:file open;
 allow system_server mediaprovider:process getattr;
 allow system_server mediaprovider_app:process getattr;
 allow system_server nfc:process getattr;
-allow system_server sysfs:dir open;
-allow system_server updater_app:process getattr;
 allow system_server build_bootimage_prop:file getattr;
 allow system_server gatekeeperd:process getattr;
 allow system_server shell:process getattr;
