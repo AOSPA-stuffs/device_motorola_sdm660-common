@@ -55,4 +55,20 @@
         <instance>default</instance>
     </interface>
 </hal>
+<hal format="hidl" optional="true">
+    <name>motorola.hardware.health</name>
+    <version>1.0</version>
+    <interface>
+        <name>IMotHealth</name>
+        <instance>default</instance>
+    </interface>
+</hal>
+<hal format="hidl" optional="true">
+    <name>com.motorola.mod</name>
+    <version>1.0</version>
+    <interface>
+        <name>IModManager</name>
+        <instance>default</instance>
+    </interface>
+</hal>
 </compatibility-matrix>
